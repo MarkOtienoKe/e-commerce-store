@@ -2,7 +2,7 @@
 <div  class="top-bar">
     <div style="color:white" class="top-bar-left">
         <h4 class="brand-title">
-            <a href="{{url('/home')}}">
+            <a href="{{route('home')}}">
                 <i class="fa fa-home fa-lg" aria-hidden="true">
                 </i>
                 MC-MyKey Shirts
