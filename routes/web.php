@@ -11,19 +11,18 @@
 |
 */
 
-Route::get('/', 'FrontController@index')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', ['as' => 'home.view', 'uses' => 'FrontController@index']);
 Route::get('/shirts', ['as' => 'shirts.view', 'uses' => 'FrontController@viewShirts']);
 Route::get('/shirt', ['as' => 'shirt.view', 'uses' => 'FrontController@viewShirt']);
 
 Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('admin.index');
-
-    Route::resource('product','ProductsController');
+Route::group(['prefix'=>'admin','middleware'=>'auth'], function (){
+return view('admin.index');
 });
